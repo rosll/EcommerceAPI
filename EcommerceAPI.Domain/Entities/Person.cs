@@ -20,16 +20,16 @@ namespace EcommerceAPI.Domain.Entities
         public Person(string name, string document, string phone)
         {
             Validation(name, document, phone);
+            Purchases = new List<Purchase>();
         }
 
         // Constructor para editar
         public Person(int id, string name, string document, string phone)
         {
             DomainValidationException.When(id < 0, "Id deve ser maior que 0");
-
             Id = id;
-
             Validation(name, document, phone);
+            Purchases = new List<Purchase>();
         }
 
         private void Validation(string name, string document, string phone)
